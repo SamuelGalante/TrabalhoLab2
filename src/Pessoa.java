@@ -1,15 +1,23 @@
 
 public class Pessoa {
 		
-		private int id;
+		private Long id;
 		private String nome;
 		private String sexo;
-		private int idade;
+		private Integer idade;
 		private String moradia;
 		private String civil;
 		private String raca;
 		
-		public Pessoa (int idPessoa, String nomePessoa, String sexoPessoa, int idadePessoa, String moradiaPessoa, String civilPessoa, String racaPessoa) {
+		public Pessoa() { 
+			
+		}
+		
+		public Pessoa(Long idPessoa) {
+			setId(idPessoa);
+		}
+		
+		public Pessoa (Long idPessoa, String nomePessoa, String sexoPessoa, Integer idadePessoa, String moradiaPessoa, String civilPessoa, String racaPessoa) {
 			setId(idPessoa);
 			setNome(nomePessoa);
 			setSexo(sexoPessoa);
@@ -19,10 +27,10 @@ public class Pessoa {
 			setRaca(racaPessoa);
 		}
 		
-		public int getId() {
+		public Long getId() {
 			return id;
 		}
-		public void setId(int id) {
+		public void setId(Long id) {
 			this.id = id;
 		}
 		public String getNome() {
@@ -37,10 +45,10 @@ public class Pessoa {
 		public void setSexo(String sexo) {
 			this.sexo = sexo;
 		}
-		public int getIdade() {
+		public Integer getIdade() {
 			return idade;
 		}
-		public void setIdade(int idade) {
+		public void setIdade(Integer idade) {
 			this.idade = idade;
 		}
 		public String getMoradia() {
@@ -62,5 +70,15 @@ public class Pessoa {
 			this.raca = raca;
 		}
 		
+		@Override
+		public String toString() {
+			return "Nome: " + this.getNome() + "\n" +
+				   "Identidade: " + this.getId() + "\t" +
+				   "Sexo: " + this.getSexo() + "\t" +
+				   "Idade: " + this.getIdade() + "\n" +
+				   "Estado civil: " + this.getCivil() + "\t" +
+				   "Raça: " + this.getRaca() + "\n" +
+				   "Morador da Zona " + this.getMoradia() + "\n";
+		}
 		
 }
