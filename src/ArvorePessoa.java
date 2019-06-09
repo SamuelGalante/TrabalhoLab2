@@ -21,7 +21,7 @@ public class ArvorePessoa {
 				if (raizArvore.item.getId() < pessoaNova.getId()) {
 					raizArvore.direita = inserir(raizArvore.direita, pessoaNova);
 				} else {
-					System.out.println(pessoaNova.getNome() + "já foi inserido anteriormente!");
+					System.out.println(pessoaNova.getNome() + "jï¿½ foi inserido anteriormente!");
 				}
 			}
 		}
@@ -37,8 +37,7 @@ public class ArvorePessoa {
 	private NodoPessoa pesquisar(NodoPessoa raizArvore, int id) {
 
 		if (raizArvore == null) {
-			System.out.println("Não foi possível encontrar a matrícula. Favor verificar o número digitado");
-			return raizArvore;
+			return null;
 		} else {
 			if (raizArvore.item.getId() > id) {
 				raizArvore.esquerda = pesquisar(raizArvore.esquerda, id);
@@ -62,7 +61,7 @@ public class ArvorePessoa {
 
 	public NodoPessoa antecessor(NodoPessoa raizArvore, int id) {
 		if(raizArvore.item.getId()==id) {
-			System.out.println("Não possui antecessor, pois é a raiz.");
+			return null;
 		}
 		else {
 			if(raizArvore.esquerda.item.getId()==id || raizArvore.direita.item.getId()==id) {
@@ -82,7 +81,7 @@ public class ArvorePessoa {
 
 	private NodoPessoa remover(NodoPessoa raizArvore, int id) {
 		if (raizArvore == null) {
-			System.out.println("Não foi possível encontrar a matrícula. Favor verificar o número digitado");
+			System.out.println("Nï¿½o foi possï¿½vel encontrar a matrï¿½cula. Favor verificar o nï¿½mero digitado");
 			return raizArvore;
 		} else {
 			if (raizArvore.item.getId() == id) {
