@@ -34,13 +34,13 @@ public class Censo extends ArvorePessoa {
     public double obterDesvioPadraoIdadeSolteiro() {
         OpcoesCenso filtro = new OpcoesCenso();
         filtro.estadoCivil = EstadoCivil.SOLTEIRO;
-        return obterDesvioPadraoFiltro(filtro);
+        return obterDesvioPadraoIdadeFiltro(filtro);
     }
 
     public double obterDesvioPadraoIdadeCasado() {
         OpcoesCenso filtro = new OpcoesCenso();
         filtro.estadoCivil = EstadoCivil.CASADO;
-        return obterDesvioPadraoFiltro(filtro);
+        return obterDesvioPadraoIdadeFiltro(filtro);
     }
 
     private double obterMediaIdadeFiltro(OpcoesCenso filtro) {
@@ -75,10 +75,11 @@ public class Censo extends ArvorePessoa {
         return total;
     }
 
-    private double obterDesvioPadraoFiltro(OpcoesCenso filtro) {
+    private double obterDesvioPadraoIdadeFiltro(OpcoesCenso filtro) {
         double mediaAritmetica = obterMediaIdadeFiltro(filtro);
         double soma = obterSomaDesvioPadraoFiltro(mediaAritmetica, raiz, filtro);
-        double resultado = soma / mediaAritmetica;
+        int total = obterTotalPessoasFiltro(raiz, filtro);
+        double resultado = soma / total;
         return Math.sqrt(divisao);
     }
 
