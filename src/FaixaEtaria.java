@@ -3,9 +3,13 @@ public enum FaixaEtaria {
     IDADE_26_A_30("26 a 30 anos"), IDADE_31_A_45("31 a 45 anos"), IDADE_46_A_65("46 a 65 anos"),
     IDADE_MAIOR_DE_65("Maior de 65 anos");
 
-    public String valor;
+    private String valor;
 
     FaixaEtaria(String valor) {
         this.valor = valor;
+    }
+
+    public String getValor() {
+        return valor;
     }
 }

@@ -93,6 +93,6 @@ public class Pessoa {
 		} else {
 			faixa = FaixaEtaria.IDADE_0_A_12;
 		}
-		return faixa.valor;
+		return faixa.getValor();
 	}
 }

@@ -98,11 +98,11 @@ public class Censo extends ArvorePessoa {
 
     private boolean aplicarFiltro(NodoPessoa raiz, OpcoesCenso opcoes) {
         boolean condicao = raiz != null && opcoes != null
-                && (opcoes.faixaEtaria != null && raiz.item.getFaixaEtaria().equals(opcoes.faixaEtaria.valor))
-                && (opcoes.estadoCivil != null && raiz.item.getCivil().equals(opcoes.estadoCivil.valor))
-                && (opcoes.raca != null && raiz.item.getRaca().equals(opcoes.raca.valor))
-                && (opcoes.moradia != null && raiz.item.getMoradia().equals(opcoes.moradia.valor))
-                && (opcoes.sexo != null && raiz.items.getSexo().equals(opcoes.sexo.valor));
+                && (opcoes.faixaEtaria != null && raiz.item.getFaixaEtaria().equals(opcoes.faixaEtaria.getValor()))
+                && (opcoes.estadoCivil != null && raiz.item.getCivil().equals(opcoes.estadoCivil.getValor()))
+                && (opcoes.raca != null && raiz.item.getRaca().equals(opcoes.raca.getValor()))
+                && (opcoes.moradia != null && raiz.item.getMoradia().equals(opcoes.moradia.getValor()))
+                && (opcoes.sexo != null && raiz.items.getSexo().equals(opcoes.sexo.getValor()));
         return condicao;
     }
 }
