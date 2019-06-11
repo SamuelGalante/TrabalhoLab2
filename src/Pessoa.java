@@ -80,8 +80,28 @@ public class Pessoa {
 				   "Sexo: " + this.getSexoDesc() + "\t" +
 				   "Idade: " + this.getIdade() + "\n" +
 				   "Estado civil: " + this.getCivil() + "\t" +
-				   "Raça: " + this.getRaca() + "\n" +
+				   "Raï¿½a: " + this.getRaca() + "\n" +
 				   "Morador da Zona " + this.getMoradia() + "\n";
+		}
+
+		public String getFaixaEtaria() {
+			FaixaEtaria faixa;
+			if (this.idade > 65) {
+				faixa = FaixaEtaria.IDADE_MAIOR_DE_65;
+			} else if (this.idade > 45) {
+				faixa = FaixaEtaria.IDADE_46_A_65;
+			} else if (this.idade > 30) {
+				faixa = FaixaEtaria.IDADE_31_A_45;
+			} else if (this.idade > 25) {
+				faixa = FaixaEtaria.IDADE_26_A_30;
+			} else if (this.idade > 19) {
+				faixa = FaixaEtaria.IDADE_20_A_25;
+			} else if (this.idade > 12) {
+				faixa = FaixaEtaria.IDADE_13_A_19;
+			} else {
+				faixa = FaixaEtaria.IDADE_0_A_12;
+			}
+			return faixa.getValor();
 		}
 		
 }
