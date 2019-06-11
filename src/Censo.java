@@ -1,7 +1,13 @@
 /**
  * Armazena e calcula dados de elementos da classe Pessoa
  */
-public class Censo extends ArvorePessoa {
+public class Censo {
+
+    private NodoPessoa raiz;
+
+    public Censo(ArvorePessoa arvore) {
+        raiz = arvore.raiz;
+    }
 
     /**
      * Calcula a média de de idade de todas as pessoas
@@ -70,9 +76,13 @@ public class Censo extends ArvorePessoa {
      * @param filtro Filtro de características
      */
     private double obterMediaIdadeFiltro(OpcoesCenso filtro) {
-        int totalIdade = obterSomaIdadeFiltro(raiz, filtro);
+        double resultado = 0;
         int totalPessoas = obterTotalPessoasFiltro(raiz, filtro);
-        return (double) totalIdade / totalPessoas;
+        if (totalPessoas > 0) {
+            int totalIdade = obterSomaIdadeFiltro(raiz, filtro);
+            resultado = (double) totalIdade / totalPessoas;
+        }
+        return resultado;
     }
 
     /**
@@ -87,9 +97,9 @@ public class Censo extends ArvorePessoa {
             boolean filtroValido = aplicarFiltro(raiz, filtro);
             if (filtroValido) {
                 total += 1;
-                total += obterTotalPessoasFiltro(raiz.direita, filtro);
-                total += obterTotalPessoasFiltro(raiz.esquerda, filtro);
             }
+            total += obterTotalPessoasFiltro(raiz.direita, filtro);
+            total += obterTotalPessoasFiltro(raiz.esquerda, filtro);
         }
         return total;
     }
@@ -100,15 +110,15 @@ public class Censo extends ArvorePessoa {
      * @param raiz   Elemento inicial para pesquisar
      * @param filtro Filtro de características para contar
      */
-    private double obterSomaIdadeFiltro(NodoPessoa raiz, OpcoesCenso filtro) {
+    private int obterSomaIdadeFiltro(NodoPessoa raiz, OpcoesCenso filtro) {
         int total = 0;
         if (raiz != null) {
             boolean filtroValido = aplicarFiltro(raiz, filtro);
             if (filtroValido) {
                 total += raiz.item.getIdade();
-                total += obterSomaIdadeFiltro(raiz.direita, filtro);
-                total += obterSomaIdadeFiltro(raiz.esquerda, filtro);
             }
+            total += obterSomaIdadeFiltro(raiz.direita, filtro);
+            total += obterSomaIdadeFiltro(raiz.esquerda, filtro);
         }
         return total;
     }
@@ -119,11 +129,14 @@ public class Censo extends ArvorePessoa {
      * @param filtro Filtro de caracterísicas
      */
     private double obterDesvioPadraoIdadeFiltro(OpcoesCenso filtro) {
-        double mediaAritmetica = obterMediaIdadeFiltro(filtro);
-        double soma = obterSomaDesvioPadraoFiltro(mediaAritmetica, raiz, filtro);
+        double resultado = 0;
         int total = obterTotalPessoasFiltro(raiz, filtro);
-        double resultado = soma / total;
-        return Math.sqrt(divisao);
+        if (total > 0) {
+            double mediaAritmetica = obterMediaIdadeFiltro(filtro);
+            double soma = obterSomaDesvioPadraoFiltro(mediaAritmetica, raiz, filtro);
+            resultado = Math.sqrt(soma / total);
+        }
+        return resultado;
     }
 
     /**
@@ -141,9 +154,9 @@ public class Censo extends ArvorePessoa {
             boolean filtroValido = aplicarFiltro(raiz, filtro);
             if (filtroValido) {
                 total += Math.pow(raiz.item.getIdade() * mediaAritmetica, 2);
-                total += obterSomaIdadeFiltro(raiz.direita, filtro);
-                total += obterSomaIdadeFiltro(raiz.esquerda, filtro);
             }
+            total += obterSomaIdadeFiltro(raiz.direita, filtro);
+            total += obterSomaIdadeFiltro(raiz.esquerda, filtro);
         }
         return total;
     }
@@ -168,7 +181,7 @@ public class Censo extends ArvorePessoa {
                 // Moradia indiferente ou igual ao filtro
                 && (opcoes.moradia == null || raiz.item.getMoradia().equals(opcoes.moradia.getValor()))
                 // Sexo indiferente ou igual ao filtro
-                && (opcoes.sexo == null || raiz.items.getSexo().equals(opcoes.sexo.getValor())));
+                && (opcoes.sexo == null || raiz.item.getSexo().equals(opcoes.sexo.getValor())));
         return condicao;
     }
 }

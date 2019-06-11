@@ -1,5 +1,5 @@
 public enum Sexo {
-    FEMININO("Feminino"), MASCULINO("Masculino");
+    FEMININO("F"), MASCULINO("M");
 
     private String valor;
 
