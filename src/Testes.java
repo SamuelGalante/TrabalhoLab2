@@ -19,7 +19,7 @@ public class Testes {
 
 		menuPrincipal();
 
-		System.out.println("Deseja salvar suas alterações? S/N");
+		System.out.println("Deseja salvar suas alteraÃ§Ãµes? S/N");
 
 		String salvar;
 
@@ -40,10 +40,10 @@ public class Testes {
 		int controle;
 
 		do {
-			System.out.println("\nSelecione a opção desejada:");
+			System.out.println("\nSelecione a opÃ§Ã£o desejada:");
 			System.out.println("1 - Buscar uma pessoa");
-			System.out.println("2 - Editar informações");
-			System.out.println("3 - Gerar relatório");
+			System.out.println("2 - Editar informaÃ§Ãµes");
+			System.out.println("3 - Gerar relatÃ³rio");
 			System.out.println("0 - Encerrar o programa");
 
 			controle = scan.nextInt();
@@ -61,7 +61,7 @@ public class Testes {
 			case 0:
 				break;
 			default:
-				System.out.println("Opção inválida");
+				System.out.println("OpÃ§Ã£o invÃ¡lida");
 				break;
 			}
 
@@ -78,7 +78,7 @@ public class Testes {
 				Pessoa retorno = arvore.pesquisar(id);
 
 				if (retorno == null) {
-					System.out.println("Não encontrado");
+					System.out.println("NÃ£o encontrado");
 					System.out.println("Deseja pesquisar novamente?");
 					System.out.println("1 - Sim");
 					System.out.println("0 - Sair");
@@ -105,7 +105,7 @@ public class Testes {
 			if (id != 0) {
 				Pessoa pessoa = arvore.pesquisar(id);
 				if (pessoa == null) {
-					System.out.println("Não encontrado");
+					System.out.println("NÃ£o encontrado");
 					System.out.println("Deseja pesquisar novamente?");
 					System.out.println("1 - Sim");
 					System.out.println("0 - Sair");
@@ -115,20 +115,20 @@ public class Testes {
 
 						System.out.println(pessoa.toString());
 
-						System.out.println("Selecione o parâmetro de alteração: ");
+						System.out.println("Selecione o parÃ¢metro de alteraÃ§Ã£o: ");
 						System.out.println("1 - Nome");
 						System.out.println("2 - Sexo");
 						System.out.println("3 - Idade");
-						System.out.println("4 - Região de morada");
+						System.out.println("4 - RegiÃ£o de morada");
 						System.out.println("5 - Estado civil");
-						System.out.println("6 - Raça");
+						System.out.println("6 - RaÃ§a");
 						System.out.println("0 - Sair");
 
 						controle = scan.nextInt();
 
 						if (controle == 1) {
 							System.out.println(pessoa.getNome());
-							System.out.println("Digite o novo parâmetro, e 0 para cancelar:");
+							System.out.println("Digite o novo parÃ¢metro, e 0 para cancelar:");
 							controleS = scan.nextLine();
 							if (controleS != "0") {
 								controleS = scan.nextLine();
@@ -136,7 +136,7 @@ public class Testes {
 							}
 						} else if (controle == 2) {
 							System.out.println(pessoa.getSexo());
-							System.out.println("Digite o novo parâmetro, e 0 para cancelar:");
+							System.out.println("Digite o novo parÃ¢metro, e 0 para cancelar:");
 							controleS = scan.nextLine();
 							if (controleS != "0") {
 								controleS = scan.nextLine();
@@ -144,7 +144,7 @@ public class Testes {
 							}
 						} else if (controle == 3) {
 							System.out.println(pessoa.getIdade());
-							System.out.println("Digite o novo parâmetro, e 0 para cancelar:");
+							System.out.println("Digite o novo parÃ¢metro, e 0 para cancelar:");
 							controleS = scan.nextLine();
 							if (controleS != "0") {
 								controleS = scan.nextLine();
@@ -155,7 +155,7 @@ public class Testes {
 
 						else if (controle == 4) {
 							System.out.println(pessoa.getMoradia());
-							System.out.println("Digite o novo parâmetro, e 0 para cancelar:");
+							System.out.println("Digite o novo parÃ¢metro, e 0 para cancelar:");
 							controleS = scan.nextLine();
 							if (controleS != "0") {
 								controleS = scan.nextLine();
@@ -163,7 +163,7 @@ public class Testes {
 							}
 						} else if (controle == 5) {
 							System.out.println(pessoa.getCivil());
-							System.out.println("Digite o novo parâmetro, e 0 para cancelar:");
+							System.out.println("Digite o novo parÃ¢metro, e 0 para cancelar:");
 							controleS = scan.nextLine();
 							if (controleS != "0") {
 								controleS = scan.nextLine();
@@ -171,7 +171,7 @@ public class Testes {
 							}
 						} else if (controle == 6) {
 							System.out.println(pessoa.getRaca());
-							System.out.println("Digite o novo parâmetro, e 0 para cancelar:");
+							System.out.println("Digite o novo parÃ¢metro, e 0 para cancelar:");
 							controleS = scan.nextLine();
 							if (controleS != "0") {
 								controleS = scan.nextLine();
@@ -187,13 +187,52 @@ public class Testes {
 
 	static void imprimirRelatorio() {
 		int controle;
-		System.out.println("1 - Relatório de população total");
-		System.out.println("2 - Relatório de sexo");
-		System.out.println("3 - Relatório de estado civil");
-		System.out.println("4 - Relatório de raça");
-		System.out.println("5 - Relatório de moradia");
-		System.out.println("6 - Relatório de faixa etária");
-		System.out.println("7 - Estatísticas de idade");
+		GerarRelatorioCaracterizacao relatorio = new GerarRelatorioCaracterizacao();
+		System.out.println("Relatï¿½rio de categorizaï¿½ï¿½o");
+		System.out.println("___________________________");
+		System.out.println("Populaï¿½ï¿½o total: " + relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("___________________________"); 
+		System.out.println("Sexo: ");
+		System.out.println("Masculino: " + relatorio.CaracterizacaoSexo(arvore.raiz));
+		System.out.println("Feminino: "+ relatorio.CaracterizacaoSexo(arvore.raiz));
+		System.out.println("___________________________");
+		System.out.println("Estado civil: " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
+		System.out.println("Solteiro(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
+		System.out.println("Casado(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
+		System.out.println("Divorciado(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
+		System.out.println("Viï¿½vo(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
+		System.out.println("___________________________");
+		System.out.println("Raï¿½a:");
+		System.out.println("Parda: " + relatorio.CaracterizacaoRaca(arvore.raiz));
+		System.out.println("Preta: " + relatorio.CaracterizacaoRaca(arvore.raiz));
+		System.out.println("Branca: " + relatorio.CaracterizacaoRaca(arvore.raiz));
+		System.out.println("Amarela: " + relatorio.CaracterizacaoRaca(arvore.raiz));
+		System.out.println("Indï¿½gena: " + relatorio.CaracterizacaoRaca(arvore.raiz));
+		System.out.println("___________________________");
+		System.out.println("Moradia: ");
+		System.out.println("Rural: " + relatorio.CaracterizacaoMoradia(arvore.raiz));
+		System.out.println("Urbana: " + relatorio.CaracterizacaoMoradia(arvore.raiz));
+		System.out.println("___________________________");
+		System.out.println("Faixa etï¿½ria");
+		System.out.println("0 a 12 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("13 a 19 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("20 a 25 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("26 a 30 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("31 a 45 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("46 a 65 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("maiores de 65 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("___________________________");
+							
+		
+		System.out.println("7 - Estatï¿½sticas de idade");
+//		System.out.println("8 - Sair");
+//		System.out.println("1 - RelatÃ³rio de populaÃ§Ã£o total");
+//		System.out.println("2 - RelatÃ³rio de sexo");
+//		System.out.println("3 - RelatÃ³rio de estado civil");
+//		System.out.println("4 - RelatÃ³rio de raÃ§a");
+//		System.out.println("5 - RelatÃ³rio de moradia");
+//		System.out.println("6 - RelatÃ³rio de faixa etÃ¡ria");
+//		System.out.println("7 - EstatÃ­sticas de idade");
 		System.out.println("8 - Sair");
 		controle = scan.nextInt();
 	}
