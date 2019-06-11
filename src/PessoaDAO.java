@@ -6,11 +6,10 @@ import java.io.IOException;
 
 
 public class PessoaDAO {
-	static final String ARQUIVO = "arquivo_de_teste.txt";
 	
-	public ListaPessoa buscarTodos() throws NumberFormatException, IOException {
-		ListaPessoa lista = new ListaPessoa();
-		BufferedReader leitura = new BufferedReader(new FileReader(ARQUIVO));
+	public static ArvorePessoa montarArvoreDeArquivo(String nomeArquivo) throws NumberFormatException, IOException {
+		ArvorePessoa arvore = new ArvorePessoa();
+		BufferedReader leitura = new BufferedReader(new FileReader(nomeArquivo));
 		String linha;
 		
 		while((linha = leitura.readLine()) != null) {
@@ -25,12 +24,16 @@ public class PessoaDAO {
 			pessoa.setCivil(dados[5]); 
 			pessoa.setRaca(dados[6]);
 			
-			lista.inserirFinal(pessoa);			
+			arvore.inserir(pessoa);			
 		}		
 		
 		leitura.close();
-		return lista;
+		return arvore;
 	}
+	
+	
+	
+	/*
 	
 	public Pessoa buscar(Pessoa pesquisada) throws IOException {
 		BufferedReader leitura = new BufferedReader(new FileReader(ARQUIVO));
@@ -99,23 +102,17 @@ public class PessoaDAO {
 			salvarListaArquivo(listaArquivo);
 		}
 	}
+	*/
 	
-	public void salvarListaArquivo(ListaPessoa listaArquivo) throws IOException {
-		BufferedWriter escrita = new BufferedWriter(new FileWriter(ARQUIVO, false));
-		while(!listaArquivo.listaVazia()) {
-			Pessoa pessoa = listaArquivo.retirarPrimeiro();
-			
-			escrita.write(pessoa.getId() + ";");
-			escrita.write(pessoa.getNome() + ";");
-			escrita.write(pessoa.getSexo() + ";");
-			escrita.write(pessoa.getIdade() + ";");
-			escrita.write(pessoa.getMoradia() + ";");
-			escrita.write(pessoa.getCivil() + ";");
-			escrita.write(pessoa.getRaca());
-			escrita.write(System.getProperty("line.separator"));
-			escrita.flush();
-		}
+	public static void salvarListaArquivo(ArvorePessoa arvore, String nomeArquivo) throws IOException {
+		BufferedWriter escrita = new BufferedWriter(new FileWriter(nomeArquivo, false));
+		String[] sb = arvore.gerarListaArquivo();
 		
+		for (int i = 0; i < sb.length; i++) {
+			escrita.write(sb[i] + "\n");
+			escrita.flush();			
+		}
+
 		escrita.close();
 	}
 }
