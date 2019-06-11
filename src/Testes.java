@@ -186,41 +186,47 @@ public class Testes {
 	}
 
 	static void imprimirRelatorio() {
-		int controle;
 		GerarRelatorioCaracterizacao relatorio = new GerarRelatorioCaracterizacao();
+		int controle;
+		int[] sexo = relatorio.CaracterizacaoSexo(arvore.raiz);
+		int[] estadoCivil = relatorio.CaracterizacaoEstadoCivil(arvore.raiz);
+		int[] raca = relatorio.CaracterizacaoRaca(arvore.raiz);
+		int[] moradia = relatorio.CaracterizacaoMoradia(arvore.raiz);
+		int[] faixaEtaria = relatorio.CaracterizacaoFaixaEtaria(arvore.raiz);
+		
 		System.out.println("Relat�rio de categoriza��o");
 		System.out.println("___________________________");
 		System.out.println("Popula��o total: " + relatorio.PopulacaoTotal(arvore.raiz));
 		System.out.println("___________________________"); 
 		System.out.println("Sexo: ");
-		System.out.println("Masculino: " + relatorio.CaracterizacaoSexo(arvore.raiz));
-		System.out.println("Feminino: "+ relatorio.CaracterizacaoSexo(arvore.raiz));
+		System.out.println("Masculino: " + (sexo[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Feminino: "+ (sexo[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
 		System.out.println("___________________________");
-		System.out.println("Estado civil: " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
-		System.out.println("Solteiro(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
-		System.out.println("Casado(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
-		System.out.println("Divorciado(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
-		System.out.println("Vi�vo(a): " + relatorio.CaracterizacaoEstadoCivil(arvore.raiz));
+		System.out.println("Estado civil: " + (estadoCivil[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Solteiro(a): " + (estadoCivil[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Casado(a): " + (estadoCivil[2]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Vi�vo(a): " + (estadoCivil[3]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Divorciado(a): " + (estadoCivil[4]*100)/relatorio.PopulacaoTotal(arvore.raiz));
 		System.out.println("___________________________");
 		System.out.println("Ra�a:");
-		System.out.println("Parda: " + relatorio.CaracterizacaoRaca(arvore.raiz));
-		System.out.println("Preta: " + relatorio.CaracterizacaoRaca(arvore.raiz));
-		System.out.println("Branca: " + relatorio.CaracterizacaoRaca(arvore.raiz));
-		System.out.println("Amarela: " + relatorio.CaracterizacaoRaca(arvore.raiz));
-		System.out.println("Ind�gena: " + relatorio.CaracterizacaoRaca(arvore.raiz));
+		System.out.println("Parda: " + (raca[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Preta: " + (raca[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Branca: " + (raca[2]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Amarela: " + (raca[3]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Ind�gena: " + (raca[4]*100)/relatorio.PopulacaoTotal(arvore.raiz));
 		System.out.println("___________________________");
 		System.out.println("Moradia: ");
-		System.out.println("Rural: " + relatorio.CaracterizacaoMoradia(arvore.raiz));
-		System.out.println("Urbana: " + relatorio.CaracterizacaoMoradia(arvore.raiz));
+		System.out.println("Rural: " + (moradia[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Urbana: " + (moradia[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
 		System.out.println("___________________________");
 		System.out.println("Faixa et�ria");
-		System.out.println("0 a 12 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
-		System.out.println("13 a 19 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
-		System.out.println("20 a 25 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
-		System.out.println("26 a 30 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
-		System.out.println("31 a 45 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
-		System.out.println("46 a 65 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
-		System.out.println("maiores de 65 : " + relatorio.CaracterizacaoFaixaEtaria(arvore.raiz));
+		System.out.println("0 a 12 : " + (faixaEtaria[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("13 a 19 : " + (faixaEtaria[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("20 a 25 : " + (faixaEtaria[2]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("26 a 30 : " + (faixaEtaria[3]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("31 a 45 : " + (faixaEtaria[4]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("46 a 65 : " + (faixaEtaria[5]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("maiores de 65 : " + (faixaEtaria[6]*100)/relatorio.PopulacaoTotal(arvore.raiz));
 		System.out.println("___________________________");
 							
 		
