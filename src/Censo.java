@@ -33,6 +33,24 @@ public class Censo {
         filtro.sexo = Sexo.MASCULINO;
         return obterMediaIdadeFiltro(filtro);
     }
+    
+    /**
+     * Calcula a média de de idade das pessoas cadastradas que moram na zona rural
+     */
+    public double obterMediaIdadeZonaRural() {
+        OpcoesCenso filtro = new OpcoesCenso();
+        filtro.moradia = Moradia.RURAL;
+        return obterMediaIdadeFiltro(filtro);
+    }
+
+    /**
+     * Calcula a média de de idade das pessoas cadastradas que moram na zona urbana
+     */
+    public double obterMediaIdadeZonaUrbana() {
+        OpcoesCenso filtro = new OpcoesCenso();
+        filtro.moradia = Moradia.URBANA;
+        return obterMediaIdadeFiltro(filtro);
+    }
 
     /**
      * Calcula a média de de idade das pessoas solteiras cadastradas

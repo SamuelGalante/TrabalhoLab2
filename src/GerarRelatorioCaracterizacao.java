@@ -1,6 +1,4 @@
-
 public class GerarRelatorioCaracterizacao {
-	private int valor;
 	private int sexoF;
 	private int sexoM;
 	private int solteiro;
@@ -21,115 +19,140 @@ public class GerarRelatorioCaracterizacao {
 	private int idade5;
 	private int idade6;
 	private int idade7;
-	
+
 	NodoPessoa raiz;
-	
-	public int PopulacaoTotal(NodoPessoa raiz)
-	{
-		if(raiz != null) {
-			valor = this.PopulacaoTotal(raiz.esquerda) + this.PopulacaoTotal(raiz.direita) + 1;
-			return valor;
-		}else {
-			return valor;
-		}
+
+	public GerarRelatorioCaracterizacao(ArvorePessoa arvore) {
+		this.raiz = arvore.raiz;
 	}
-	
-	public int[] CaracterizacaoSexo(NodoPessoa raiz) {
-		String sexo = raiz.item.getSexo();
-		
-		if(raiz != null) {
-			if(sexo.startsWith("masculino")) {
+
+	public int PopulacaoTotal() {
+		return PopulacaoTotal(this.raiz);
+	}
+
+	private int PopulacaoTotal(NodoPessoa raiz) {
+		int valor = 0;
+		if (raiz != null) {
+			valor += this.PopulacaoTotal(raiz.esquerda) + this.PopulacaoTotal(raiz.direita) + 1;
+		}
+		return valor;
+	}
+
+	public int[] CaracterizacaoSexo() {
+		return CaracterizacaoSexo(this.raiz);
+	}
+
+	private int[] CaracterizacaoSexo(NodoPessoa raiz) {
+		if (raiz != null) {
+			String sexo = raiz.item.getSexo();
+			if (sexo.equalsIgnoreCase("M")) {
 				sexoM++;
-			}else if(sexo.startsWith("feminino")) {
+			} else if (sexo.equalsIgnoreCase("F")) {
 				sexoF++;
 			}
 			this.CaracterizacaoSexo(raiz.esquerda);
 			this.CaracterizacaoSexo(raiz.direita);
-		}				
-		return new int[] {sexoM, sexoF};
+		}
+		return new int[] { sexoM, sexoF };
 	}
-	
-	public int[] CaracterizacaoEstadoCivil(NodoPessoa raiz) {
-		String civil = raiz.item.getCivil();
-		
-		if(raiz != null) {
-			if(civil.startsWith("solteiro")) {
+
+	public int[] CaracterizacaoEstadoCivil() {
+		return CaracterizacaoEstadoCivil(this.raiz);
+	}
+
+	private int[] CaracterizacaoEstadoCivil(NodoPessoa raiz) {
+		if (raiz != null) {
+			String civil = raiz.item.getCivil();
+
+			if (civil.equalsIgnoreCase("solteiro")) {
 				solteiro++;
-			}else if(civil.startsWith("casado")) {
+			} else if (civil.equalsIgnoreCase("casado")) {
 				casado++;
-			}else if(civil.startsWith("viuvo")) {
+			} else if (civil.equalsIgnoreCase("viuvo")) {
 				viuvo++;
-			}else if(civil.startsWith("divorciado")) {
+			} else if (civil.equalsIgnoreCase("divorciado")) {
 				divorciado++;
 			}
-			this.CaracterizacaoSexo(raiz.esquerda);
-			this.CaracterizacaoSexo(raiz.direita);
+			this.CaracterizacaoEstadoCivil(raiz.esquerda);
+			this.CaracterizacaoEstadoCivil(raiz.direita);
 		}
-		return new int[] {solteiro,casado,viuvo,divorciado};
+		return new int[] { solteiro, casado, viuvo, divorciado };
 	}
-	
-	public int[] CaracterizacaoRaca(NodoPessoa raiz) {
-		String raca = raiz.item.getRaca();
-		
-		if(raiz != null) {
-			if(raca.startsWith("parda")) {
+
+	public int[] CaracterizacaoRaca() {
+		return CaracterizacaoRaca(this.raiz);
+	}
+
+	private int[] CaracterizacaoRaca(NodoPessoa raiz) {
+		if (raiz != null) {
+			String raca = raiz.item.getRaca();
+
+			if (raca.startsWith("parda")) {
 				parda++;
-			}else if(raca.startsWith("preta")) {
+			} else if (raca.equalsIgnoreCase("preta")) {
 				preta++;
-			}else if(raca.startsWith("branca")) {
+			} else if (raca.equalsIgnoreCase("branca")) {
 				branca++;
-			}else if(raca.startsWith("amarela")) {
+			} else if (raca.equalsIgnoreCase("amarela")) {
 				amarela++;
-			}else if(raca.startsWith("indigena")) {
+			} else if (raca.equalsIgnoreCase("indigena")) {
 				indigena++;
 			}
-			
-			this.CaracterizacaoSexo(raiz.esquerda);
-			this.CaracterizacaoSexo(raiz.direita);
+
+			this.CaracterizacaoRaca(raiz.esquerda);
+			this.CaracterizacaoRaca(raiz.direita);
 		}
-		
-		return new int[] {parda,preta,branca,amarela,indigena};
+
+		return new int[] { parda, preta, branca, amarela, indigena };
 	}
-	
-	public int[] CaracterizacaoMoradia(NodoPessoa raiz) {
-		String moradia = raiz.item.getMoradia();
-		
-		if(raiz != null) {
-			if(moradia.startsWith("rural")) {
+
+	public int[] CaracterizacaoMoradia() {
+		return CaracterizacaoMoradia(this.raiz);
+	}
+
+	private int[] CaracterizacaoMoradia(NodoPessoa raiz) {
+		if (raiz != null) {
+			String moradia = raiz.item.getMoradia();
+
+			if (moradia.equalsIgnoreCase("rural")) {
 				rural++;
-			}else if(moradia.startsWith("urbana")) {
+			} else if (moradia.equalsIgnoreCase("urbana")) {
 				urbana++;
 			}
-			
-			this.CaracterizacaoSexo(raiz.esquerda);
-			this.CaracterizacaoSexo(raiz.direita);
+
+			this.CaracterizacaoMoradia(raiz.esquerda);
+			this.CaracterizacaoMoradia(raiz.direita);
 		}
-		return new int[] {rural,urbana};
+		return new int[] { rural, urbana };
 	}
-	
-	public int[] CaracterizacaoFaixaEtaria(NodoPessoa raiz) {
-		int idade = raiz.item.getIdade();
-		
-		if(raiz != null) {
-			if(idade >= 0 && idade <= 12) {
+
+	public int[] CaracterizacaoFaixaEtaria() {
+		return CaracterizacaoFaixaEtaria(this.raiz);
+	}
+
+	private int[] CaracterizacaoFaixaEtaria(NodoPessoa raiz) {
+		if (raiz != null) {
+			int idade = raiz.item.getIdade();
+
+			if (idade >= 0 && idade <= 12) {
 				idade1++;
-			}else if(idade > 13 && idade < 19) {
+			} else if (idade > 13 && idade < 19) {
 				idade2++;
-			} else if(idade > 20 && idade < 25) {
+			} else if (idade > 20 && idade < 25) {
 				idade3++;
-			}else if(idade > 26 && idade < 30) {
+			} else if (idade > 26 && idade < 30) {
 				idade4++;
-			}else if(idade > 31 && idade < 45) {
+			} else if (idade > 31 && idade < 45) {
 				idade5++;
-			}else if(idade > 46 && idade < 65) {
+			} else if (idade > 46 && idade < 65) {
 				idade6++;
-			}else if(idade > 65) {
+			} else if (idade > 65) {
 				idade7++;
 			}
-			
-			this.CaracterizacaoSexo(raiz.esquerda);
-			this.CaracterizacaoSexo(raiz.direita);
+
+			this.CaracterizacaoFaixaEtaria(raiz.esquerda);
+			this.CaracterizacaoFaixaEtaria(raiz.direita);
 		}
-		return new int[] {idade1,idade2,idade3,idade4,idade5,idade6};
+		return new int[] { idade1, idade2, idade3, idade4, idade5, idade6, idade7 };
 	}
 }

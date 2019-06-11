@@ -186,61 +186,90 @@ public class Testes {
 	}
 
 	static void imprimirRelatorio() {
-		GerarRelatorioCaracterizacao relatorio = new GerarRelatorioCaracterizacao();
-		int controle;
-		int[] sexo = relatorio.CaracterizacaoSexo(arvore.raiz);
-		int[] estadoCivil = relatorio.CaracterizacaoEstadoCivil(arvore.raiz);
-		int[] raca = relatorio.CaracterizacaoRaca(arvore.raiz);
-		int[] moradia = relatorio.CaracterizacaoMoradia(arvore.raiz);
-		int[] faixaEtaria = relatorio.CaracterizacaoFaixaEtaria(arvore.raiz);
+		GerarRelatorioCaracterizacao relatorio = new GerarRelatorioCaracterizacao(arvore);
+		int[] sexo = relatorio.CaracterizacaoSexo();
+		int[] estadoCivil = relatorio.CaracterizacaoEstadoCivil();
+		int[] raca = relatorio.CaracterizacaoRaca();
+		int[] moradia = relatorio.CaracterizacaoMoradia();
+		int[] faixaEtaria = relatorio.CaracterizacaoFaixaEtaria();
 		
-		System.out.println("Relat�rio de categoriza��o");
+		int populacaoTotal = relatorio.PopulacaoTotal();
+		
+		System.out.println("Relatório de categorização");
 		System.out.println("___________________________");
-		System.out.println("Popula��o total: " + relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("___________________________"); 
+		System.out.println("População total: " + populacaoTotal);
+		System.out.println("___________________________");
 		System.out.println("Sexo: ");
-		System.out.println("Masculino: " + (sexo[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Feminino: "+ (sexo[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Masculino: " + (sexo[0]*100d)/populacaoTotal + "%");
+		System.out.println("Feminino: "+ (sexo[1]*100d)/populacaoTotal + "%");
 		System.out.println("___________________________");
-		System.out.println("Estado civil: " + (estadoCivil[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Solteiro(a): " + (estadoCivil[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Casado(a): " + (estadoCivil[2]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Vi�vo(a): " + (estadoCivil[3]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Divorciado(a): " + (estadoCivil[4]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Estado civil: ");
+		System.out.println("Solteiro(a): " + (estadoCivil[0]*100d)/populacaoTotal + "%");
+		System.out.println("Casado(a): " + (estadoCivil[1]*100d)/populacaoTotal + "%");
+		System.out.println("Viúvo(a): " + (estadoCivil[2]*100d)/populacaoTotal + "%");
+		System.out.println("Divorciado(a): " + (estadoCivil[3]*100d)/populacaoTotal + "%");
 		System.out.println("___________________________");
-		System.out.println("Ra�a:");
-		System.out.println("Parda: " + (raca[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Preta: " + (raca[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Branca: " + (raca[2]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Amarela: " + (raca[3]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Ind�gena: " + (raca[4]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Raça:");
+		System.out.println("Parda: " + (raca[0]*100d)/populacaoTotal + "%");
+		System.out.println("Preta: " + (raca[1]*100d)/populacaoTotal + "%");
+		System.out.println("Branca: " + (raca[2]*100d)/populacaoTotal + "%");
+		System.out.println("Amarela: " + (raca[3]*100d)/populacaoTotal + "%");
+		System.out.println("Indígena: " + (raca[4]*100d)/populacaoTotal + "%");
 		System.out.println("___________________________");
 		System.out.println("Moradia: ");
-		System.out.println("Rural: " + (moradia[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("Urbana: " + (moradia[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Rural: " + (moradia[0]*100d)/populacaoTotal + "%");
+		System.out.println("Urbana: " + (moradia[1]*100d)/populacaoTotal + "%");
 		System.out.println("___________________________");
-		System.out.println("Faixa et�ria");
-		System.out.println("0 a 12 : " + (faixaEtaria[0]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("13 a 19 : " + (faixaEtaria[1]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("20 a 25 : " + (faixaEtaria[2]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("26 a 30 : " + (faixaEtaria[3]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("31 a 45 : " + (faixaEtaria[4]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("46 a 65 : " + (faixaEtaria[5]*100)/relatorio.PopulacaoTotal(arvore.raiz));
-		System.out.println("maiores de 65 : " + (faixaEtaria[6]*100)/relatorio.PopulacaoTotal(arvore.raiz));
+		System.out.println("Faixa etária");
+		System.out.println("0 a 12 : " + (faixaEtaria[0]*100d)/populacaoTotal + "%");
+		System.out.println("13 a 19 : " + (faixaEtaria[1]*100d)/populacaoTotal + "%");
+		System.out.println("20 a 25 : " + (faixaEtaria[2]*100d)/populacaoTotal + "%");
+		System.out.println("26 a 30 : " + (faixaEtaria[3]*100d)/populacaoTotal + "%");
+		System.out.println("31 a 45 : " + (faixaEtaria[4]*100d)/populacaoTotal + "%");
+		System.out.println("46 a 65 : " + (faixaEtaria[5]*100d)/populacaoTotal + "%");
+		System.out.println("maiores de 65 : " + (faixaEtaria[6]*100d)/populacaoTotal + "%");
 		System.out.println("___________________________");
-							
 		
-		System.out.println("7 - Estat�sticas de idade");
-//		System.out.println("8 - Sair");
-//		System.out.println("1 - Relatório de população total");
-//		System.out.println("2 - Relatório de sexo");
-//		System.out.println("3 - Relatório de estado civil");
-//		System.out.println("4 - Relatório de raça");
-//		System.out.println("5 - Relatório de moradia");
-//		System.out.println("6 - Relatório de faixa etária");
-//		System.out.println("7 - Estatísticas de idade");
-		System.out.println("8 - Sair");
-		controle = scan.nextInt();
+		Censo censo = new Censo(arvore);
+
+		double mediaIdadeGeral = censo.obterMediaIdadeGeral();
+		double mediaIdadeSexoFeminino = censo.obterMediaIdadeSexoFeminino();
+		double mediaIdadeSexoMasculino = censo.obterMediaIdadeSexoMasculino();
+		double mediaIdadeZonaRural = censo.obterMediaIdadeZonaRural();
+		double mediaIdadeZonaUrbana = censo.obterMediaIdadeZonaUrbana();
+		double mediaIdadeSolteiros = censo.obterMediaIdadeSolteiro();
+		double mediaIdadeCasados = censo.obterMediaIdadeCasado();
+		double desvioPadraoIdadeSolteiro = censo.obterDesvioPadraoIdadeSolteiro();
+		double desvioPadraoIdadeCasado = censo.obterDesvioPadraoIdadeCasado();
+
+		System.out.println("\nRelatorio estatístico de idade");
+		
+		System.out.println("\n");
+		System.out.println("Média de idade geral: \t" + mediaIdadeGeral);
+		System.out.println("\n______________________________________________________________\n");
+		
+		System.out.println("Categorizada por sexo:");
+		System.out.print("Feminino: " + mediaIdadeSexoFeminino);
+		System.out.println("\tMasculino: " + mediaIdadeSexoMasculino);
+		System.out.println("\n______________________________________________________________\n");
+		
+		System.out.println("Categorizada por moradia:");
+		System.out.print("Rural: " + mediaIdadeZonaRural);
+		System.out.println("\tUrbana: " + mediaIdadeZonaUrbana);
+		System.out.println("\n______________________________________________________________\n");
+		
+		System.out.println("Solteiros e casados:");
+		System.out.println("\t\tMedia de idade:\tDesvio padrão:");
+		
+		System.out.print("Solteiros: \t");
+		System.out.print(mediaIdadeSolteiros + "\t");
+		System.out.println(desvioPadraoIdadeSolteiro + "\t");
+
+		System.out.print("Casados: \t");
+		System.out.print(mediaIdadeCasados + "\t");
+		System.out.println(desvioPadraoIdadeCasado);
+		
+		System.out.println("\nFIM DO RELATÓRIO_________________________________________________\n");
 	}
 
 }
